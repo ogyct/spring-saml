@@ -12,3 +12,11 @@
 ## minimal app setup
 
 - see src/main/resources/application.yaml
+
+## Deploy
+
+`./gradlew clean build`
+
+`docker buildx build --platform linux/amd64 -t avgdima/spring-saml:latest .`
+
+`docker push avgdima/spring-saml:latest `

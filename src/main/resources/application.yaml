@@ -1,20 +1,22 @@
+server:
+  port: 8080
 logging.level:
   org.springframework.security: TRACE
-spring:
-  security:
-    saml2:
-      relyingparty:
-        registration:
-          saml-client:
-            #important, sets clientId
-            entity-id: "saml-client"
-            signing:
-              credentials:
-                - private-key-location: classpath:saml/local.key
-                  certificate-location: classpath:saml/local.crt
-            assertingparty:
-              singlesignon:
-                # if keycloak is set to work with client certs
-                signRequest: true
-              metadata-uri: "http://localhost:9000/realms/test%20saml/protocol/saml/descriptor"
+#spring:
+#  security:
+#    saml2:
+#      relyingparty:
+#        registration:
+#          saml-client:
+#            #important, sets clientId
+#            entity-id: "saml-client"
+#            signing:
+#              credentials:
+#                - private-key-location: classpath:saml/local.key
+#                  certificate-location: classpath:saml/local.crt
+#            assertingparty:
+#              singlesignon:
+#                # if keycloak is set to work with client certs
+#                signRequest: false
+#              metadata-uri: "http://localhost:9000/realms/test_saml/protocol/saml/descriptor"
 
