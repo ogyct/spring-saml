@@ -10,6 +10,7 @@ spring:
           saml-client:
             #important, sets clientId
             entity-id: "https://hammerhead-app-6kn8s.ondigitalocean.app/"
+            #            entity-id: "saml-client"
             decryption:
               credentials:
                 - private-key-location: classpath:saml/local.key
@@ -23,4 +24,5 @@ spring:
                 # if keycloak is set to work with client certs
                 signRequest: false
               metadata-uri: "https://tnia.identita.gov.cz/FPSTS/FederationMetadata/2007-06/FederationMetadata.xml"
+#              metadata-uri: "http://localhost:9000/realms/test_saml/protocol/saml/descriptor"
 

@@ -1,12 +1,17 @@
 package com.example.springsaml;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.SneakyThrows;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.saml2.provider.service.authentication.Saml2AuthenticatedPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 class TestController {
+
+    @Autowired
+    ObjectMapper objectMapper;
 
     @GetMapping
     public String hello() {
@@ -14,11 +19,11 @@ class TestController {
     }
 
     @GetMapping(path = "/saml-hello")
+    @SneakyThrows
     public String helloSaml() {
         var principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof Saml2AuthenticatedPrincipal saml2AuthenticatedPrincipal) {
-            return saml2AuthenticatedPrincipal.getAttributes().toString();
-        }
-        return principal.toString();
+
+        var result = objectMapper.writeValueAsString(principal);
+        return result;
     }
 }
