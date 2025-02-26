@@ -1,22 +1,26 @@
 server:
   port: 8080
 logging.level:
-  org.springframework.security: TRACE
-#spring:
-#  security:
-#    saml2:
-#      relyingparty:
-#        registration:
-#          saml-client:
-#            #important, sets clientId
-#            entity-id: "saml-client"
-#            signing:
-#              credentials:
-#                - private-key-location: classpath:saml/local.key
-#                  certificate-location: classpath:saml/local.crt
-#            assertingparty:
-#              singlesignon:
-#                # if keycloak is set to work with client certs
-#                signRequest: false
-#              metadata-uri: "http://localhost:9000/realms/test_saml/protocol/saml/descriptor"
+  org.springframework.security: trace
+spring:
+  security:
+    saml2:
+      relyingparty:
+        registration:
+          saml-client:
+            #important, sets clientId
+            entity-id: "https://hammerhead-app-6kn8s.ondigitalocean.app/"
+            decryption:
+              credentials:
+                - private-key-location: classpath:saml/local.key
+                  certificate-location: classpath:saml/local.crt
+            signing:
+              credentials:
+                - private-key-location: classpath:saml/local.key
+                  certificate-location: classpath:saml/local.crt
+            assertingparty:
+              singlesignon:
+                # if keycloak is set to work with client certs
+                signRequest: false
+              metadata-uri: "https://tnia.identita.gov.cz/FPSTS/FederationMetadata/2007-06/FederationMetadata.xml"
 
